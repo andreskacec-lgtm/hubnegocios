@@ -102,7 +102,7 @@
             opacity: 0.9;
         }
 
-        /* 2. Tarjeta Contacto (Span 1 originalmente, ahora span-3 para balancear) */
+        /* 2. Tarjeta Contacto (Span 3 para balancear el final) */
         .social-card {
             background-color: var(--pastel-pink);
             color: var(--text-pink);
@@ -229,47 +229,6 @@
         .amazon-card { background-color: var(--pastel-orange); color: var(--text-orange); }
         .import-card { background-color: var(--pastel-green); color: var(--text-green); }
 
-        /* 4. Tarjeta de Pasos (Span 2) */
-        .steps-card {
-            background-color: var(--pastel-yellow);
-            color: var(--text-yellow);
-            justify-content: center;
-        }
-
-        .steps-card h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .step-item {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 20px;
-            border-radius: 20px;
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: var(--text-yellow);
-            color: #fff;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .step-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
-        .step-item p { font-size: 0.85rem; opacity: 0.9; }
-
         .hidden { display: none !important; }
 
         /* 5. Banda Transportadora (Marquee) */
@@ -382,13 +341,13 @@
         /* Responsivo */
         @media (max-width: 950px) {
             .bento-container { grid-template-columns: repeat(2, 1fr); }
-            .hero-card, .steps-card, .advantages-card, .map-card, .marquee-card, .social-card { grid-column: span 2; }
+            .hero-card, .advantages-card, .map-card, .marquee-card, .social-card { grid-column: span 2; }
             .social-links { flex-direction: row; flex-wrap: wrap; }
         }
 
         @media (max-width: 650px) {
             .bento-container { grid-template-columns: 1fr; }
-            .span-2, .span-3, .hero-card, .social-card, .steps-card, .advantages-card, .map-card, .import-card, .marquee-card { grid-column: span 1; }
+            .span-2, .span-3, .hero-card, .social-card, .advantages-card, .map-card, .import-card, .marquee-card { grid-column: span 1; }
             .hero-card { flex-direction: column; gap: 1.5rem; }
             .social-card { flex-direction: column; align-items: stretch; text-align: center; }
             .social-links { flex-direction: column; }
@@ -415,34 +374,34 @@
             <a href="https://asesor-a.vercel.app/" class="bento-btn" target="_blank">Obtener Asesoría</a>
         </div>
 
-        <!-- Tarjeta de Pasos (Span 2) -->
-        <div class="bento-card steps-card span-2">
-            <h2>Tu web en 3 pasos</h2>
-            <div class="steps-grid">
-                <div class="step-item">
-                    <div class="step-number">1</div>
-                    <h4>Nicho</h4>
-                    <p>Elige tu producto o servicio.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <h4>Personaliza</h4>
-                    <p>Diseño adaptado a ti.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <h4>Lanza</h4>
-                    <p>Recibe pedidos online.</p>
-                </div>
-            </div>
-        </div>
-
         <!-- Servicio 2: Amazon -->
         <div class="bento-card service-card amazon-card">
             <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=800&q=80" alt="Curso Amazon">
             <h3>Dominio Amazon</h3>
             <p>Descubre cómo comprar económico y aplicar estrategias de ganancia.</p>
             <a href="https://amazon7.vercel.app/" class="bento-btn" target="_blank">Dominar Amazon</a>
+        </div>
+
+        <!-- Ventajas Competitivas (Span 2) -->
+        <div class="bento-card advantages-card span-2">
+            <h2>Ventajas Destacadas</h2>
+            <div class="advantages-grid">
+                <div class="adv-item">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Despliegue Rápido</h4>
+                    <p>Tu negocio online listo y funcionando en tiempo récord.</p>
+                </div>
+                <div class="adv-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Soporte Integral</h4>
+                    <p>Acompañamiento experto en cada paso de tu proyecto.</p>
+                </div>
+                <div class="adv-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Escalabilidad</h4>
+                    <p>Herramientas diseñadas para crecer junto contigo.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Banda Transportadora de Imágenes (Span 3) -->
@@ -469,28 +428,6 @@
             </div>
         </div>
 
-        <!-- Ventajas Competitivas (Span 2) -->
-        <div class="bento-card advantages-card span-2">
-            <h2>Ventajas Destacadas</h2>
-            <div class="advantages-grid">
-                <div class="adv-item">
-                    <i class="fas fa-rocket"></i>
-                    <h4>Despliegue Rápido</h4>
-                    <p>Tu negocio online listo y funcionando en tiempo récord.</p>
-                </div>
-                <div class="adv-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Soporte Integral</h4>
-                    <p>Acompañamiento experto en cada paso de tu proyecto.</p>
-                </div>
-                <div class="adv-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>Escalabilidad</h4>
-                    <p>Herramientas diseñadas para crecer junto contigo.</p>
-                </div>
-            </div>
-        </div>
-
         <!-- Servicio 3: Importaciones -->
         <div class="bento-card service-card import-card">
             <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Importaciones">
@@ -500,7 +437,7 @@
         </div>
 
         <!-- Conecta (Ahora span-3 para ocupar el ancho completo antes del mapa) -->
-        <div class="bento-card social-card span-3">
+        <div class="bento-card social-card span-2">
             <h2>Conecta con nosotros</h2>
             <div class="social-links">
                 <a href="https://wa.me/573012897680?text=Hola%20Andr%C3%A9s%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta." class="social-btn" target="_blank">
