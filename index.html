@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrés Enciso | Hub de Negocios</title>
-    <!-- Fuentes de Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fuentes de Google: Poppins y Dancing Script (Cursiva) -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -34,10 +34,6 @@
             /* Color para Ventajas */
             --pastel-cyan: #cffafe;
             --text-cyan: #155e75;
-
-            /* Nuevo color para IA */
-            --pastel-ai: #fae8ff;
-            --text-ai: #86198f;
         }
 
         * {
@@ -106,7 +102,7 @@
             opacity: 0.9;
         }
 
-        /* 2. Tarjeta Contacto (Span 1) */
+        /* 2. Tarjeta Contacto (Span 1 originalmente, ahora span-3 para balancear) */
         .social-card {
             background-color: var(--pastel-pink);
             color: var(--text-pink);
@@ -121,7 +117,8 @@
 
         .social-links {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             gap: 12px;
         }
 
@@ -136,6 +133,9 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            flex: 1;
+            min-width: 150px;
+            justify-content: center;
         }
 
         .social-btn i {
@@ -270,73 +270,9 @@
         .step-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
         .step-item p { font-size: 0.85rem; opacity: 0.9; }
 
-        /* --- NUEVO: Tarjeta Inteligencia Artificial (Span 3) --- */
-        .ai-card {
-            background-color: var(--pastel-ai);
-            color: var(--text-ai);
-        }
-
-        .ai-card h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .ai-card > p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            opacity: 0.9;
-            max-width: 800px;
-        }
-
-        .ai-input-group {
-            display: flex;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .ai-input {
-            flex: 1;
-            padding: 16px 24px;
-            border-radius: 50px;
-            border: 2px solid rgba(134, 25, 143, 0.2);
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-            background: rgba(255,255,255,0.7);
-            color: var(--text-ai);
-        }
-
-        .ai-input::placeholder { color: rgba(134, 25, 143, 0.5); }
-        .ai-input:focus {
-            border-color: var(--text-ai);
-            background: #fff;
-            box-shadow: 0 5px 15px rgba(134, 25, 143, 0.1);
-        }
-
-        .ai-result {
-            background: rgba(255,255,255,0.8);
-            padding: 1.5rem 2rem;
-            border-radius: 20px;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-top: 1.5rem;
-            border-left: 5px solid var(--text-ai);
-        }
-
-        .ai-result strong { color: var(--text-ai); font-weight: 700;}
-
         .hidden { display: none !important; }
 
-        .spinner {
-            display: inline-block;
-            margin-right: 8px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* --- NUEVO: Banda Transportadora (Marquee) --- */
+        /* 5. Banda Transportadora (Marquee) */
         .marquee-card {
             background-color: #f1f5f9;
             padding: 1.5rem !important;
@@ -424,11 +360,11 @@
         .adv-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
         .adv-item p { font-size: 0.85rem; opacity: 0.9; line-height: 1.4; }
 
-        /* 7. Tarjeta de Mapa (Span 1) */
+        /* 7. Tarjeta de Mapa */
         .map-card {
             padding: 0;
             background: #e2e8f0;
-            min-height: 250px;
+            min-height: 300px;
         }
 
         .map-card iframe {
@@ -446,18 +382,17 @@
         /* Responsivo */
         @media (max-width: 950px) {
             .bento-container { grid-template-columns: repeat(2, 1fr); }
-            .hero-card, .steps-card, .advantages-card, .map-card, .import-card, .ai-card, .marquee-card { grid-column: span 2; }
-            .social-card { grid-column: span 2; flex-direction: row; align-items: center; justify-content: space-between; }
+            .hero-card, .steps-card, .advantages-card, .map-card, .marquee-card, .social-card { grid-column: span 2; }
             .social-links { flex-direction: row; flex-wrap: wrap; }
         }
 
         @media (max-width: 650px) {
             .bento-container { grid-template-columns: 1fr; }
-            .span-2, .span-3, .hero-card, .social-card, .steps-card, .advantages-card, .map-card, .import-card, .ai-card, .marquee-card { grid-column: span 1; }
+            .span-2, .span-3, .hero-card, .social-card, .steps-card, .advantages-card, .map-card, .import-card, .marquee-card { grid-column: span 1; }
             .hero-card { flex-direction: column; gap: 1.5rem; }
-            .hero-video { min-height: 220px; width: 100%; position: relative; }
-            .steps-grid, .advantages-grid { grid-template-columns: 1fr; }
-            .ai-input-group { flex-direction: column; }
+            .social-card { flex-direction: column; align-items: stretch; text-align: center; }
+            .social-links { flex-direction: column; }
+            .advantages-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -470,6 +405,14 @@
             <h1>Crea tu negocio online.<br>Sin complicaciones.</h1>
             <p>Lanza tu sitio web profesional hoy mismo y escala tus resultados con nuestras herramientas.</p>
             <a href="https://wa.me/573012897680?text=Hola%20Andr%C3%A9s%2C%20estoy%20interesado%20en%20crear%20mi%20nueva%20landing%20page%20gratis.%20%C2%BFPodemos%20agendar%20una%20asesor%C3%ADa%3F" class="bento-btn" style="background: var(--text-purple); color: #fff; max-width: 250px;" target="_blank">Empezar mi web gratis</a>
+        </div>
+
+        <!-- Servicio 1: Legal -->
+        <div class="bento-card service-card legal-card">
+            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="Asesoría Legal">
+            <h3>Blindaje Legal</h3>
+            <p>Asegura tu emprendimiento con contratos y términos profesionales.</p>
+            <a href="https://asesor-a.vercel.app/" class="bento-btn" target="_blank">Obtener Asesoría</a>
         </div>
 
         <!-- Tarjeta de Pasos (Span 2) -->
@@ -494,14 +437,6 @@
             </div>
         </div>
 
-        <!-- Servicio 1: Legal -->
-        <div class="bento-card service-card legal-card">
-            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="Asesoría Legal">
-            <h3>Blindaje Legal</h3>
-            <p>Asegura tu emprendimiento con contratos y términos profesionales.</p>
-            <a href="https://asesor-a.vercel.app/" class="bento-btn" target="_blank">Obtener Asesoría</a>
-        </div>
-
         <!-- Servicio 2: Amazon -->
         <div class="bento-card service-card amazon-card">
             <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=800&q=80" alt="Curso Amazon">
@@ -510,7 +445,7 @@
             <a href="https://amazon7.vercel.app/" class="bento-btn" target="_blank">Dominar Amazon</a>
         </div>
 
-        <!-- NUEVO: Banda Transportadora de Imágenes (Span 3) -->
+        <!-- Banda Transportadora de Imágenes (Span 3) -->
         <div class="bento-card marquee-card span-3">
             <div class="marquee-track">
                 <!-- Set 1 -->
@@ -522,7 +457,7 @@
                     <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=400&q=80" alt="Estrategia Amazon">
                     <img src="https://images.unsplash.com/photo-1577017040065-650ee4d43339?auto=format&fit=crop&w=400&q=80" alt="Contenedores de Carga">
                 </div>
-                <!-- Set 2 (Duplicado para el bucle infinito invisible) -->
+                <!-- Set 2 -->
                 <div class="marquee-set">
                     <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80" alt="Martillo Legal">
                     <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=400&q=80" alt="Cajas de Amazon">
@@ -534,34 +469,7 @@
             </div>
         </div>
 
-        <!-- Servicio 3: Importaciones -->
-        <div class="bento-card service-card import-card">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Importaciones">
-            <h3>Importación</h3>
-            <p>Trae productos de USA a precios de costo sin complicaciones.</p>
-            <a href="https://us-select-gwcp.vercel.app/" class="bento-btn" target="_blank">Empezar a Importar</a>
-        </div>
-
-        <!-- NUEVO: Asistente IA (Span 3 - Fila completa) -->
-        <div class="bento-card ai-card span-3">
-            <h2>Asistente de Nichos con IA ✨</h2>
-            <p>¿No sabes qué vender en tu nueva web? Escribe tus pasatiempos, habilidades o temas que te gusten, y nuestra Inteligencia Artificial diseñará 3 ideas de negocio rentables para ti al instante.</p>
-            
-            <div class="ai-input-group">
-                <input type="text" id="aiInput" class="ai-input" placeholder="Ej: Me encantan las mascotas, el diseño gráfico y viajar..." autocomplete="off">
-                <button id="aiBtn" class="bento-btn" style="background: var(--text-ai); color: #fff; padding-left: 2rem; padding-right: 2rem;">
-                    Generar Ideas ✨
-                </button>
-            </div>
-            
-            <!-- Contenedores de resultados -->
-            <div id="aiLoading" class="ai-result hidden">
-                <i class="fas fa-circle-notch spinner"></i> Analizando el mercado y generando ideas para ti...
-            </div>
-            <div id="aiResult" class="ai-result hidden"></div>
-        </div>
-
-        <!-- Tarjeta de Ventajas Competitivas (Span 2) -->
+        <!-- Ventajas Competitivas (Span 2) -->
         <div class="bento-card advantages-card span-2">
             <h2>Ventajas Destacadas</h2>
             <div class="advantages-grid">
@@ -583,9 +491,17 @@
             </div>
         </div>
 
-        <!-- Tarjeta Social / Perfil (Span 1) -->
-        <div class="bento-card social-card">
-            <h2>Conecta</h2>
+        <!-- Servicio 3: Importaciones -->
+        <div class="bento-card service-card import-card">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Importaciones">
+            <h3>Importación</h3>
+            <p>Trae productos de USA a precios de costo sin complicaciones.</p>
+            <a href="https://us-select-gwcp.vercel.app/" class="bento-btn" target="_blank">Empezar a Importar</a>
+        </div>
+
+        <!-- Conecta (Ahora span-3 para ocupar el ancho completo antes del mapa) -->
+        <div class="bento-card social-card span-3">
+            <h2>Conecta con nosotros</h2>
             <div class="social-links">
                 <a href="https://wa.me/573012897680?text=Hola%20Andr%C3%A9s%2C%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta." class="social-btn" target="_blank">
                     <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp
@@ -594,13 +510,13 @@
                     <i class="fab fa-instagram" style="font-size: 1.2rem;"></i> Instagram
                 </a>
                 <a href="https://link.mercadopago.com.co/giftcardtopclass" class="social-btn" target="_blank">
-                    <i class="fas fa-hand-holding-heart" style="font-size: 1.2rem;"></i> Apoyar
+                    <i class="fas fa-hand-holding-heart" style="font-size: 1.2rem;"></i> Apoyar Proyecto
                 </a>
             </div>
         </div>
 
-        <!-- Tarjeta de Mapa (Span 2 para balancear cuadrícula) -->
-        <div class="bento-card map-card span-2">
+        <!-- Mapa al final (Span 3 para ocupar todo el ancho) -->
+        <div class="bento-card map-card span-3">
             <iframe 
                 src="https://maps.google.com/maps?q=calle%20179%20%23%206-29%20Bogota&t=&z=16&ie=UTF8&iwloc=&output=embed">
             </iframe>
@@ -608,86 +524,5 @@
 
     </div>
 
-    <!-- Integración Lógica de la API de Gemini -->
-    <script>
-        // La clave API será inyectada automáticamente por el entorno de ejecución
-        const apiKey = "";
-
-        // Función para reintentos automáticos (Exponential Backoff) según las mejores prácticas
-        async function fetchWithRetry(url, options, retries = 5) {
-            const delays = [1000, 2000, 4000, 8000, 16000];
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (!response.ok) throw new Error('Error en la API');
-                    return await response.json();
-                } catch (error) {
-                    if (i === retries - 1) throw error;
-                    await new Promise(res => setTimeout(res, delays[i]));
-                }
-            }
-        }
-
-        document.getElementById('aiBtn').addEventListener('click', async () => {
-            const inputField = document.getElementById('aiInput');
-            const resultDiv = document.getElementById('aiResult');
-            const loadingDiv = document.getElementById('aiLoading');
-            const userInput = inputField.value.trim();
-
-            if (!userInput) {
-                // Pequeña animación si el usuario no escribe nada
-                inputField.style.transform = 'translateX(5px)';
-                setTimeout(() => inputField.style.transform = 'translateX(-5px)', 100);
-                setTimeout(() => inputField.style.transform = 'translateX(0)', 200);
-                return;
-            }
-
-            // Actualizar la interfaz para mostrar el estado de carga
-            resultDiv.classList.add('hidden');
-            loadingDiv.classList.remove('hidden');
-
-            const systemPrompt = `Eres un consultor experto en creación de negocios online y comercio electrónico. El usuario te dará una lista de sus pasatiempos o intereses. Tu tarea es generar exactamente 3 ideas de nicho de mercado rentables y creativas para que el usuario pueda crear una página web y empezar a vender. Responde siempre en español. Formato deseado:
-            1. **[Nombre Atractivo de la Idea]**: [1 o 2 oraciones explicando por qué es rentable y cómo se puede monetizar con una web].
-            Sé directo, persuasivo y muy creativo. No añadas introducciones largas ni conclusiones.`;
-
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            
-            const payload = {
-                contents: [{ parts: [{ text: `Mis intereses son: ${userInput}` }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
-            };
-
-            try {
-                const data = await fetchWithRetry(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Lo siento, no pude generar ideas en este momento.";
-                
-                // Formatear el texto de Markdown a HTML (negritas y saltos de línea)
-                const formattedHtml = generatedText
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\n/g, '<br>');
-
-                resultDiv.innerHTML = formattedHtml;
-                resultDiv.classList.remove('hidden');
-                
-            } catch (error) {
-                resultDiv.innerHTML = "<strong>¡Ups!</strong> Hubo un error de conexión al consultar a la IA. Por favor, intenta de nuevo más tarde.";
-                resultDiv.classList.remove('hidden');
-            } finally {
-                loadingDiv.classList.add('hidden');
-            }
-        });
-
-        // Permitir que el usuario presione "Enter" para activar la IA
-        document.getElementById('aiInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                document.getElementById('aiBtn').click();
-            }
-        });
-    </script>
 </body>
 </html>
