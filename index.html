@@ -297,10 +297,10 @@
         .nav-links-wrapper {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px; /* Reducido para acomodar textos más largos */
         }
 
-        .nav-links { display: flex; gap: 30px; align-items: center;}
+        .nav-links { display: flex; gap: 20px; align-items: center;}
         .nav-links a {
             color: var(--nav-text); text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: color 0.3s;
         }
@@ -824,6 +824,35 @@
         }
 
         /* ==========================================================================
+           MODAL (VENTANA EMERGENTE PARA PÁGINAS INTERNAS)
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(24, 4, 43, 0.9); backdrop-filter: blur(10px);
+            z-index: 100000; display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-container {
+            width: 90vw; height: 90vh; background: var(--bg-surface);
+            border-radius: 24px; border: 1px solid var(--border-color);
+            position: relative; overflow: hidden; transform: scale(0.95); transition: transform 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .modal-overlay.active .modal-container { transform: scale(1); }
+        
+        .modal-close {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #fff;
+            background: var(--color-accent); border: none; width: 45px; height: 45px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 10; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .modal-close:hover { background: #be8e45; transform: rotate(90deg) scale(1.1); }
+        
+        .modal-iframe { width: 100%; height: 100%; border: none; background: #fff;}
+
+        /* ==========================================================================
            ANIMACIONES & RESPONSIVE
            ========================================================================== */
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -880,10 +909,10 @@
         
         <div class="nav-links-wrapper">
             <div class="nav-links">
-                <a href="#servicios" class="nav-link">Servicios</a>
-                <a href="#metodo" class="nav-link">Método</a>
-                <a href="#oportunidades" class="nav-link">Oportunidades</a>
-                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#" onclick="openModal('https://asesor-a.vercel.app/'); return false;" class="nav-link">Asesoría Legal</a>
+                <a href="#" onclick="openModal('https://amazon7.vercel.app/'); return false;" class="nav-link">Curso Amazon</a>
+                <a href="#" onclick="openModal('https://us-select-gwcp.vercel.app/'); return false;" class="nav-link">Importación US-SELECT</a>
+                <a href="#" onclick="openModal('https://skate-six.vercel.app/'); return false;" class="nav-link">VoltRide CO</a>
             </div>
 
             <!-- Botón Modo Oscuro / Claro -->
@@ -1005,7 +1034,7 @@
                         <div class="card-icon"><i class="fas fa-scale-balanced"></i></div>
                         <h3>Asesoría Legal</h3>
                         <p>Recomendación directa de nuestro abogado aliado. Protege tu patrimonio y blinda tu negocio con asesoría experta.</p>
-                        <a href="https://asesor-a.vercel.app/" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;" target="_blank">Explorar Legal <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" onclick="openModal('https://asesor-a.vercel.app/'); return false;" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;">Explorar Legal <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -1018,7 +1047,7 @@
                         <div class="card-icon"><i class="fab fa-amazon"></i></div>
                         <h3>Dominio Amazon</h3>
                         <p>Estrategias avanzadas de posicionamiento para escalar en el marketplace más grande del mundo. El algoritmo es una ciencia.</p>
-                        <a href="https://amazon7.vercel.app/" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;" target="_blank">Ver Curso <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" onclick="openModal('https://amazon7.vercel.app/'); return false;" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;">Ver Curso <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -1029,7 +1058,7 @@
                         <div class="card-icon"><i class="fas fa-boxes-packing"></i></div>
                         <h3>Importación USA/China</h3>
                         <p>Rompe la cadena de intermediarios. Logística y proveedores directos para maximizar tu margen operativo.</p>
-                        <a href="https://us-select-gwcp.vercel.app/" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;" target="_blank">Importar <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" onclick="openModal('https://us-select-gwcp.vercel.app/'); return false;" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;">Importar <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -1040,7 +1069,7 @@
                         <div class="card-icon"><i class="fas fa-person-skating"></i></div>
                         <h3>Skates Eléctricos</h3>
                         <p>Importación y venta de longboards y skates eléctricos. Un mercado de alta demanda y márgenes sumamente atractivos.</p>
-                        <a href="https://skate-six.vercel.app/" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;" target="_blank">Skate Six <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" onclick="openModal('https://skate-six.vercel.app/'); return false;" class="btn-premium" style="width: 100%; text-align: center; margin-top: auto; justify-content: center;">VoltRide CO <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -1222,6 +1251,14 @@
         </div>
     </footer>
 
+    <!-- MODAL PARA MOSTRAR PÁGINAS INTERNAS (IFRAME) -->
+    <div class="modal-overlay" id="pageModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+            <iframe src="" id="modalIframe" class="modal-iframe" title="Contenido Interno"></iframe>
+        </div>
+    </div>
+
     <!-- ==========================================================================
          JAVASCRIPT MAGICS
          ========================================================================== -->
@@ -1340,6 +1377,39 @@
                 }
             } else {
                 navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // 9. LÓGICA DEL MODAL (VENTANA EMERGENTE)
+        const modal = document.getElementById('pageModal');
+        const modalIframe = document.getElementById('modalIframe');
+
+        function openModal(url) {
+            modalIframe.src = url;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+            
+            // Ocultamos el cursor personalizado en el modal para evitar bugs visuales con el iframe
+            document.getElementById('cursor').style.display = 'none';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modalIframe.src = ''; // Limpia el iframe al cerrar para detener videos/audios
+            }, 400); // Espera a que termine la animación
+            document.body.style.overflow = 'auto'; // Restaura el scroll de la página
+            
+            // Restauramos el cursor
+            if(window.innerWidth > 768) {
+                document.getElementById('cursor').style.display = 'block';
+            }
+        }
+
+        // Cierra el modal si se hace clic en el fondo oscuro fuera del cuadro
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
             }
         });
     </script>
